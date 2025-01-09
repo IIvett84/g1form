@@ -1,0 +1,214 @@
+<div id="" class="clearfix">
+
+    <div style="text-align: center; line-height: 1.8; margin: 20px 0;">
+      <h2>Kedves Vendégeink!</h2>
+      <p>
+        A gokartozás még kényelmesebb élményéért lehetőséget biztosítunk online foglalásra! 
+        A futamok időpontjait előre lefoglalhatják az alábbi linkre kattintva:
+      </p>
+      <a href="https://booking.sms-timing.com/g1kartcenter/book/product-list" 
+         style="display: inline-block; height: 50px; margin: 10px 0; padding: 6px 20px; background-color: #000; color: #fff; text-decoration: none; border-radius: 35px; font-weight: bold; text-align: center; line-height: 17px; transition: all 0.3s;"
+         onmouseover="this.style.backgroundColor='#ff0000'; this.style.color='#fff';"
+         onmouseout="this.style.backgroundColor='#000'; this.style.color='#fff';">
+        FOGLALÁS ITT
+      </a>
+      <p>
+        Az online rendszerünkben könnyedén kiválaszthatják az Önöknek megfelelő időpontot, és akár előre ki is fizethetik a lefoglalt futamokat online bankkártyával.
+      </p>
+      <p>
+        Amennyiben személyesen szeretnék rendezni a fizetést, ezt a helyszínen is megtehetik készpénzzel, bankkártyával vagy SZÉP-kártyával.
+      </p>
+      <p>
+        Fontos, hogy a zavartalan élmény érdekében érdemes előre foglalni, különösen a hétvégék és a kiemelt időszakok előtt!
+      </p>
+      <p><strong>Várjuk szeretettel pályánkon!</strong></p>
+    </div>
+    
+     
+    <!-- NAPTÁR -->
+    <div class="grid grid-12 desk-grid-6">
+    <div class="padder animated bottom">
+    
+    <div class="centered-holder"><div class="centered">
+    <span class="big-icon black"><span class="fa fa-calendar"></span></span>
+    <h2>Naptár</h2>
+    </div></div>
+    <p>
+    <div class="loadhere" data-load-type="iframe" data-load-width="300" data-load-height="700" data-load="https://modules.sms-timing.com/Calendar/?key=ZzFrYXJ0Y2VudGVyOjZhMjlkYTdmLWQxNzYtNDY4MS1iZTUxLTNkMjg0ODlhYzIwNg%3d%3d">
+    
+    </div>
+    
+    </p>
+    
+    <div class="calendar">
+    <span class="green">Szabad futam 10 főnek</span><br />
+    <span class="yellow">Szabad futam kevesebb, mint 5 főnek</span><br />
+    <span class="red">Nincs szabad hely</span><br />
+    <span class="blue">Zártkörű rendezvény</span>
+    
+    <p>
+    Minden beérkezett foglalási szándékot e-mailben igazolunk vissza 24 órán belül. Amennyiben nem kap visszaigazolást, úgy kérjük, érdeklődjön nyitvatartási időben a megadott elérhetőségeken.
+    </p>
+    </div>
+    
+    </p>
+    
+    </div>
+    </div>
+    
+    
+    <!-- FOGLALÁS -->
+    <div class="grid grid-12 desk-grid-6 animated bottom">
+    <div class="padder">
+    
+    <div class="centered-holder"><div class="centered">
+    <span class="big-icon black"><span class="fa fa-thumb-tack"></span></span>
+    <h2>Versenycsomag Foglalás</h2>
+    </div></div>
+    
+    </div>
+    <p class="">
+    <form method="post" action="<?php echo get_template_directory_uri(); ?>/mailer/sendmail.php" data-site-url="<?php echo site_url(); ?>" data-sendto="<?php echo get_template_directory_uri(); ?>/mailer/sendmail.php" class="padder clearfix booking" >
+        <div class="grid grid-12">
+            <div class="padder2">
+                <label for="type"><i class="fa fa-angle-down"></i></label>
+                <select class="labeled" name="type">
+                    <option value="">Válasszon futam típust!</option>
+                    <option value="Céges futam">Céges futam</option>
+                    <option value="Normál futam">Normál futam</option>
+                    <!--<option value="Gyermek futam">Gyermek futam</option>-->
+                </select>
+            </div>
+        </div>
+        
+        <div class="grid grid-12">
+            <div class="padder2 disab">
+                <label for="type"><i class="fa fa-angle-down"></i></label>
+                <select disabled="" class="labeled" name="pack">
+                    <option value="">Válasszon csomag típust!</option>
+                </select>
+                <div class="pack-loader-opener"><i class="fa fa-info"></i>info</div>
+            </div>
+        </div>
+        
+        <div class="grid grid-12 company-holder">
+    
+        </div>
+    
+        <div class="grid grid-12">
+            <div class="padder2 disab">
+                <label for="name"><i class="fa fa-user"></i><span>Név</span></label>
+                <input disabled="" class="labeled label-fader" type="text" id="name" name="name" title="Név" />
+            </div>
+        </div>
+        
+        <div class="grid grid-12 bigmob-grid-6">
+            <div class="padder2 disab">
+                <label for="email"><i class="fa fa-envelope-o"></i><span>E-mail</span></label>
+                <input disabled="" class="labeled label-fader" type="email" id="email" name="email" title="E-mail" />
+            </div>
+        </div>
+        
+        <div class="grid grid-12 bigmob-grid-6">
+            <div class="padder2 disab">
+                <label for="phone"><i class="fa fa-phone"></i><span>Telefon</span></label>
+                <input disabled="" class="labeled label-fader" type="tel" id="phone" name="phone" title="Telefon" />
+            </div>
+        </div>
+        
+        <div class="grid grid-12 bigmob-grid-6">
+            <div class="padder2 disab">
+                <label for="date"><i class="fa fa-calendar"></i><span>Dátum</span></label>
+                <input disabled="" class="labeled datepicker" type="text" id="date" name="date" title="Dátum" />
+            </div>
+        </div>
+        
+        <div class="grid grid-12 bigmob-grid-6">
+            <div class="padder2 disab">
+                <label for="time"><i class="fa fa-clock-o"></i><span>Érkezés időpontja</span></label>
+                <input disabled="" class="labeled timepicker" type="text" id="time" name="time" title="Az érkezési időpont a G1-be való megérkezést és a jegyek átvételének időpontját jelenti. Az érkezési időpont után 15-20 perccel indul az első futam." />
+            </div>
+        </div>
+        
+        <div class="grid grid-12 mob-grid-6">
+            <div class="padder2 disab">
+                <label for="person"><i class="fa fa-users"></i><span>Létszám</span></label>
+                <input disabled="" class="labeled label-fader" type="number" min="1" max="100" id="person" name="person" title="Létszám" />
+            </div>
+        </div>
+        
+        <div class="grid grid-12 mob-grid-6">
+            <div class="padder2 disab">
+                <label for="round"><i class="fa fa-repeat"></i><span>Futam/fő</span></label>
+                <input disabled="" class="labeled label-fader" type="number" min="1" max="100" id="round" name="round" title="Futam/fő" />
+            </div>
+        </div>
+        
+    <div class="grid grid-12 adults-holder">
+    
+        </div>
+    
+        <div class="grid grid-12">
+            <div class="padder2 disab">
+                <label for="msg"><i class="fa fa-pencil"></i><span>Megjegyzés</span></label>
+                <textarea disabled="" class="labeled label-fader dontcheck" id="msg" name="msg" title="Egyéb megjegyzés"></textarea>
+            </div>
+        </div>
+    
+    <div class="grid grid-12 checkbox-holder" style="margin-bottom: 1em;">
+    
+        </div>
+        
+        <div class="grid grid-12">
+            <div class="padder2 disab">
+                <button disabled="">Foglalási igény elküldése</button>
+            </div>
+        </div>
+        
+        <div class="feedback">
+            <div class="box">
+                <div class="centered-holder">
+                    <div class="centered">
+                        <span class="big-icon green"><span class="fa fa-check"></span></span>
+                        <h3></h3>
+                    </div>			
+                </div>
+                <span class="addi">
+                    
+                </span>
+                
+                <i class="fa fa-times closer"></i>
+            </div>
+            <div class="loading style-1" style="display: none;"></div>
+        </div>
+        
+    </form>
+    
+    </p>
+    
+    </div>
+    
+    <div class="pack-loader">
+        <div class="puthere">
+    
+        </div>
+        <i class="closer fa fa-times"></i>
+    </div>
+    
+    <div class="grid grid-12">
+    <div class="headbar-place"></div>
+    <div class="padder animated top">
+        <p class="get-in-touch">
+            Ez az első alkalom, mikor eljön hozzánk? Nézze meg, hol vagyunk pontosan!
+        </p>
+        <div class="goon"><i class="fa fa-angle-double-down"></i></div>
+        <div class="centered-holder">
+            <a class="button2 red centered" href="<?php echo site_url(); ?>/elerhetoseg/">Hogy jutok el a G1-be<i class="fa fa-question"></i></a>
+        </div>
+    </div>
+    </div>
+    
+    </div><!-- end clearfix -->
+    
+    <div class="headbar-place"></div>
+    <div style="display: none; text-align: center;position: fixed;bottom: 0px;background-color: #F00;left: 0px;color: #FFF;right: 0px;">Február 3-tól kizárólag olyan vendégeket tudunk fogadni akik rendekeznek bármilyen amatőr vagy profi versenyzői engedéllyel és azt a helyszínen be is tudja mutatni.</div>
