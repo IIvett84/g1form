@@ -1,59 +1,94 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // Form és mezők kiválasztása
     const packageSelect = document.querySelector('select[name="pack"]');
-    const nameInput = document.querySelector('#name');
-    const emailInput = document.querySelector('#email');
-    const phoneInput = document.querySelector('#phone');
-    const dateInput = document.querySelector('#date');
-    const timeInput = document.querySelector('#time');
-    const personInput = document.querySelector('#person');
-    const roundInput = document.querySelector('#round');
-    const msgInput = document.querySelector('#msg');
-    const submitButton = document.querySelector('button');
+    const formFields = document.querySelectorAll("input, textarea, button");
+    const personInput = document.querySelector("#person");
+    const roundInput = document.querySelector("#round");
+    const emailInput = document.querySelector("#email");
+    const timeInput = document.querySelector("#time");
+    const dateInput = document.querySelector("#date");
+    const submitButton = document.querySelector("button");
   
-    // Csomagbeállítások
-    const packageSettings = {
+    const packages = {
+      "Champion Grand Prix": { min: 6, max: 9, round: 4 },
+      "Champion Le Mans": { min: 6, max: 9, round: 6 },
       "Champion Mini": { min: 5, max: 100, round: 2 },
       "Champion Basic": { min: 5, max: 100, round: 3 },
       "Champion Advance": { min: 5, max: 100, round: 5 },
-      "Champion Grand Prix": { min: 6, max: 9, round: 4 },
-      "Champion Lemans": { min: 6, max: 9, round: 9 },
     };
   
-    // Alapértelmezés: mezők letiltása
-    function disableFields() {
-      [nameInput, emailInput, phoneInput, dateInput, timeInput, personInput, roundInput, msgInput, submitButton].forEach(
-        (field) => {
-          field.disabled = true;
+    // Aktiválja az űrlapmezőket és beállítja az alapértékeket
+    function activateFields(packageName) {
+      const packageDetails = packages[packageName];
+      formFields.forEach((field) => field.removeAttribute("disabled"));
+      personInput.min = packageDetails.min;
+      personInput.max = packageDetails.max;
+      roundInput.value = packageDetails.round;
+      roundInput.setAttribute("readonly", true); // Nem módosítható
+    }
+  
+    // Mezők alaphelyzetbe állítása
+    function resetFields() {
+      formFields.forEach((field) => field.setAttribute("disabled", true));
+      personInput.value = "";
+      roundInput.value = "";
+      emailInput.value = "";
+      dateInput.value = "";
+      timeInput.value = "";
+    }
+  
+    // Email validáció
+    function validateEmail(email) {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return emailRegex.test(email);
+    }
+  
+    // Ellenőrzi, hogy minden mező ki van-e töltve
+    function validateForm() {
+      const isEmpty = Array.from(formFields).some((field) => {
+        if (field.required && !field.value) {
+          return true;
         }
-      );
-    }
+        return false;
+      });
   
-    // Mezők engedélyezése a csomag alapján
-    function enableFields(packageName) {
-      if (packageSettings[packageName]) {
-        const { min, max, round } = packageSettings[packageName];
-        personInput.min = min;
-        personInput.max = max;
-        roundInput.value = round;
-  
-        [nameInput, emailInput, phoneInput, dateInput, timeInput, personInput, msgInput, submitButton].forEach(
-          (field) => {
-            field.disabled = false;
-          }
-        );
-      } else {
-        disableFields();
+      const isValidEmail = validateEmail(emailInput.value);
+      if (isEmpty) {
+        alert("Minden mezőt ki kell tölteni!");
+        return false;
       }
+  
+      if (!isValidEmail) {
+        alert("Érvénytelen e-mail cím!");
+        return false;
+      }
+  
+      return true;
     }
   
-    // Kezdetben minden mező le van tiltva
-    disableFields();
-  
-    // Legördülő menü változás figyelése
+    // Csomag választása esemény
     packageSelect.addEventListener("change", function () {
-      const selectedPackage = packageSelect.value;
-      enableFields(selectedPackage);
+      const selectedPackage = this.value;
+  
+      resetFields(); // Alaphelyzet
+      if (selectedPackage && packages[selectedPackage]) {
+        activateFields(selectedPackage);
+        alert(`Kiválasztott csomag: ${selectedPackage}`);
+      } else {
+        alert("Válassz egy érvényes csomagot!");
+      }
     });
+  
+    // Beküldés esemény
+    submitButton.addEventListener("click", function (e) {
+      e.preventDefault();
+      if (validateForm()) {
+        alert("Foglalás elküldve!");
+        // Az itt lévő kód elküldheti az űrlapot a backendnek (pl. AJAX-al)
+      }
+    });
+  
+    // Timepicker és datepicker integráció (pl. Flatpickr használatával)
+    flatpickr("#time", { enableTime: true, noCalendar: true, dateFormat: "H:i" });
+    flatpickr("#date", { dateFormat: "Y-m-d" });
   });
   
